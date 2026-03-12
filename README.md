@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CarePoint Appointment Booking App
+
+A modern, full-stack appointment booking application built with Next.js, TailwindCSS, and Supabase.
+
+## Features
+
+- **User Authentication**: Secure Sign-up and Login using Supabase Auth (SSR).
+- **Booking Wizard**: Intuitive multi-step flow to select services, specialists, and time slots.
+- **Patient Dashboard**: Manage upcoming visits and view health overview.
+- **Admin Panel**: High-level clinic analytics, staff utilization, and appointment management.
+- **Premium UI**: Responsive design with Tailwind CSS 4.0, Lucide icons, and a healthcare-tailored theme.
+- **Database Architecture**: Robust PostgreSQL schema on Supabase with Row Level Security (RLS).
+
+## Technical Stack
+
+- **Frontend**: Next.js 15+ (App Router), TypeScript, Tailwind CSS 4.0.
+- **Backend/Auth**: Supabase (Auth, Database).
+- **Icons**: Lucide React.
+- **Styling**: Modern CSS variables and theme tokens.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Prerequisites
+
+- Node.js (v20+)
+- A Supabase project
+
+### 2. Setup Environment
+
+Copy `.env.local.example` to `.env.local` and fill in your Supabase credentials:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Database Initialization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run the SQL provided in `supabase/schema.sql` in your Supabase SQL Editor to set up the tables and RLS policies.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Install & Run
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Visit `http://localhost:3000` to see the app!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app is ready to be deployed to Vercel. Simply connect your repository and add the environment variables in the Vercel dashboard.
