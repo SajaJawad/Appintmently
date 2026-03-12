@@ -50,3 +50,4 @@ Visit `http://localhost:3000` to see the app!
 ## Deployment
 
 The app is ready to be deployed to Vercel. Simply connect your repository and add the environment variables in the Vercel dashboard.
+# Appintmently
