@@ -1,65 +1,178 @@
-import Image from "next/image";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import ServiceHighlights from "../components/ServiceHighlights";
+import Link from "next/link";
+import { Calendar, Users, Star, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen">
+      <Navbar />
+      <Hero />
+      <ServiceHighlights />
+
+      {/* Why Choose Us */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="bg-primary-light aspect-square rounded-3xl overflow-hidden shadow-2xl relative">
+                <img
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
+                  alt="Medical professional with patient"
+                  className="w-full h-full object-cover mix-blend-multiply opacity-80"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-primary/30 to-transparent" />
+              </div>
+
+              {/* Floating stats card */}
+              <div className="absolute -bottom-10 -right-10 bg-white p-6 rounded-[5px] rounded-tl-[20px] rounded-br-[20px] shadow-xl border border-border hidden sm:block">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-secondary p-3 rounded-lg">
+                    <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-secondary">
+                      4.9/5.0
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Patient Satisfaction
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">
+                Why Patients Trust Appointmently
+              </h2>
+              <div className="space-y-8">
+                {[
+                  {
+                    icon: Calendar,
+                    title: "Easy Scheduling",
+                    desc: "Book your medical appointments in under 60 seconds with our intuitive interface.",
+                  },
+                  {
+                    icon: Users,
+                    title: "Expert Specialists",
+                    desc: "Accessible network of pre-vetted, highly qualified doctors across all specialties.",
+                  },
+                  {
+                    icon: Star,
+                    title: "Personalized Care",
+                    desc: "Digital health records and personalized follow-ups for a continuous care experience.",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-primary">
+                      <item.icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-secondary mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10">
+                <Link
+                  href="/doctors"
+                  className="inline-flex items-center space-x-2 text-primary font-bold hover:translate-x-1 transition-transform"
+                >
+                  <span>Meet our specialists</span>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-secondary relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 flex flex-wrap pointer-events-none">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <Calendar key={i} className="w-32 h-32 m-8" />
+          ))}
         </div>
-      </main>
-    </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-primary rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+              Ready to Book Your Next Visit?
+            </h2>
+            <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+              Join thousands of patients who have simplified their healthcare
+              journey with Appointmently.
+            </p>
+            <Link
+              href="/signup"
+              className="bg-white text-primary px-10 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-all shadow-lg inline-block"
+            >
+              Get Started for Free
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-12 bg-white border-t border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:flex md:justify-between md:text-left">
+          <div className="mb-8 md:mb-0">
+            <div className="flex items-center justify-center md:justify-start mb-4">
+              <Link
+                href="/"
+                className="relative w-12 h-12 overflow-hidden rounded-xl border border-primary/10 shadow-sm hover:scale-105 transition-transform"
+              >
+                <img
+                  src="/brand-logo.png"
+                  alt="Logo"
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            </div>
+            <p className="text-muted-foreground max-w-xs mx-auto md:mx-0">
+              Modern healthcare appointment booking platform for patients and
+              specialists.
+            </p>
+          </div>
+
+          <div className="flex justify-center space-x-12">
+            <div>
+              <h4 className="font-bold text-secondary mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link href="/services">Services</Link>
+                </li>
+                <li>
+                  <Link href="/doctors">Doctors</Link>
+                </li>
+                <li>
+                  <Link href="/booking">Booking</Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-secondary mb-4">Legal</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link href="/privacy">Privacy</Link>
+                </li>
+                <li>
+                  <Link href="/terms">Terms</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-border text-center text-muted-foreground">
+          © {new Date().getFullYear()} Appointmently Group. All rights reserved.
+        </div>
+      </footer>
+    </main>
   );
 }
